@@ -4,7 +4,7 @@ SCRIPT_DIR=$(dirname $0)
 
 # Copy over template files to final locations
 cp -R "$SCRIPT_DIR/secrets_template" "$SCRIPT_DIR/secrets"
-cp "$SCRIPT_DIR/env-template" "$SCRIPT_DIR/.env"
+cp "$SCRIPT_DIR/.env.example" "$SCRIPT_DIR/.env"
 
 # Parses an Aurelia generated secret for the value
 function getSecret {
