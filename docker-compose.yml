@@ -17,12 +17,8 @@ secrets:
 services:
   grist:
     image: gristlabs/grist:latest
-    user: ${PUID:-1000}:${PGID:-1000}
     security_opt:
       - "no-new-privileges:true"
-    cap_drop:
-      - SETUID
-      - SETGID
     environment:
       # The URL of given OIDC provider. Used for redirects, among other things.
       GRIST_OIDC_IDP_ISSUER: https://${AUTHELIA_DOMAIN}
@@ -70,12 +66,8 @@ services:
 
   authelia:
     image: authelia/authelia:4
-    user: ${PUID:-1000}:${PGID:-1000}
     security_opt:
       - "no-new-privileges:true"
-    cap_drop:
-      - SETUID
-      - SETGID
     secrets:
       - HMAC_SECRET
       - JWT_SECRET
